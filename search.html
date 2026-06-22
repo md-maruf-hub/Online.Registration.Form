@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TNF Search System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <a href="index.html" class="submit-btn">New Registration</a>
+
+            <div class="header">
+                <h1>🔍 Search Registration</h1>
+                <p>Enter TNF Registration Number</p>
+            </div>
+
+            <div class="input-group full">
+
+                <input type="text" id="searchInput" placeholder="e.g. TNF260001">
+
+            </div>
+
+            <button class="submit-btn" onclick="searchData()">
+                Search
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+
+    </div>
+    
+
+    <script src="js/config.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/idcard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</body>
+
+</html>

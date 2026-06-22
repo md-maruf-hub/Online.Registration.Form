@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TNF Registration System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <a href="search.html" class="submit-btn">Search And Gen ID</a>
+
+            <div class="header">
+
+                <img src="assets/logo.png" class="logo">
+
+                <h1>THE NAAS FOUNDATION</h1>
+
+                <p>Online Registration Portal</p>
+
+            </div>
+
+            <form id="registrationForm">
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <label>আপনার নাম</label>
+
+                        <input type="text" id="name" placeholder="পূর্ণ নাম লিখুন" required>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <label>জন্ম তারিখ</label>
+
+                        <input type="date" id="dob" required>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>ব্লাড গ্রুপ</label>
+
+                        <select id="blood" required>
+
+                            <option value="">Select</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <label>মোবাইল নম্বর</label>
+
+                        <input type="tel" id="phone" maxlength="11" placeholder="01XXXXXXXXX" required>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>পেশা</label>
+
+                        <input type="text" id="job" placeholder="আপনার পেশা" required>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group full">
+
+                        <label>ঠিকানা</label>
+
+                        <textarea id="address" rows="3" placeholder="সম্পূর্ণ ঠিকানা" required></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group full">
+
+                        <label> THE NAAS FOUNDATION সম্পর্কে আপনার ধারণা ও পরামর্শ</label>
+
+                        <textarea id="opinion" rows="4" placeholder="যদি থাকে লিখুন"></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group full">
+
+                        <label>ছবি</label>
+
+                        <input type="file" id="image" accept="image/*" required>
+
+                    </div>
+
+                </div>
+
+                <div class="preview-box">
+
+                    <img src="assets/default-user.png" id="previewImage">
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+
+                    Registration Now
+
+                </button>
+
+            </form>
+
+            
+
+            <div id="loading" class="loading">
+
+                Processing Registration...
+
+            </div>
+
+            <div id="result"></div>
+
+        </div>
+
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/registration.js"></script>
+    <script src="js/idcard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+</body>
+
+</html>
