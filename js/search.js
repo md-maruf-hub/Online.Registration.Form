@@ -10,7 +10,6 @@ function convertDriveLink(url) {
   const match = url.match(/\/d\/(.*?)\//);
 
   if (match && match[1]) {
-    // ✅ thumbnail endpoint - img tag এ সবচেয়ে reliable
     return "https://drive.google.com/thumbnail?id=" + match[1] + "&sz=w400";
   }
 
@@ -18,7 +17,7 @@ function convertDriveLink(url) {
 }
 
 // ===============================
-// SEARCH FUNCTION
+// SEARCH FUNCTION (REG + PHONE FIXED)
 // ===============================
 
 async function searchData() {
@@ -26,7 +25,7 @@ async function searchData() {
     const reg = document.getElementById("searchInput").value.trim();
 
     if (!reg) {
-        result.innerHTML = `<p class="error">❌ Enter Registration Number</p>`;
+        result.innerHTML = `<p class="error">❌ Enter Registration Number or Phone Number</p>`;
         return;
     }
 
@@ -34,7 +33,25 @@ async function searchData() {
 
     try {
 
-        const response = await fetch(API_URL + "?registration=" + reg);
+        let url = "";
+
+        // 🔥 Registration Number Search
+        if (reg.toUpperCase().startsWith("TNF")) {
+
+            url = API_URL + "?registration=" + encodeURIComponent(reg);
+
+        }
+
+        // 🔥 Phone Number Search (Leading 0 Ignore)
+        else {
+
+            const phone = reg.replace(/^0/, "");
+
+            url = API_URL + "?phone=" + encodeURIComponent(phone);
+
+        }
+
+        const response = await fetch(url);
         const data = await response.json();
 
         console.log("FULL RESPONSE:", data);
@@ -44,7 +61,10 @@ async function searchData() {
             return;
         }
 
-        // ✅ FIXED: thumbnail link use করা হচ্ছে
+        // ===============================
+        // IMAGE PROCESS
+        // ===============================
+
         const imgUrl = data.image ? convertDriveLink(data.image) : "";
 
         result.innerHTML = `
@@ -52,13 +72,15 @@ async function searchData() {
 
             <h2>✅ Registration Found</h2>
 
-            <div class="img-box" style="width:150px; height:150px; margin:20px auto;"">
-                <img id="profileImg" src="assets/default-user.png" style="opacity:0; transition: opacity 0.3s;">
+            <div class="img-box" style="width:150px; height:150px; margin:20px auto;">
+                <img id="profileImg"
+                     src="assets/default-user.png"
+                     style="opacity:0; transition: opacity 0.3s;">
             </div>
 
             <p><b>Name:</b> ${data.name}</p>
             <p><b>Reg No:</b> ${data.registration}</p>
-            <p><b>Phone:</b> ${data.phone}</p>
+            <p><b>Phone:</b> ${0+data.phone}</p>
             <p><b>Blood:</b> ${data.blood}</p>
             <p><b>Address:</b> ${data.address}</p>
 
@@ -69,13 +91,17 @@ async function searchData() {
         </div>
         `;
 
-        // ✅ FIXED: DOM render হওয়ার পর image set করা হচ্ছে
+        // ===============================
+        // IMAGE LOAD SMOOTH FIX
+        // ===============================
+
         setTimeout(() => {
 
             const img = document.getElementById("profileImg");
             if (!img) return;
 
             if (imgUrl) {
+
                 const tempImg = new Image();
 
                 tempImg.onload = () => {
@@ -97,7 +123,10 @@ async function searchData() {
 
         }, 50);
 
-        // CACHE
+        // ===============================
+        // CACHE FOR ID CARD
+        // ===============================
+
         window.searchDataCache = {
             name: data.name,
             registration: data.registration,

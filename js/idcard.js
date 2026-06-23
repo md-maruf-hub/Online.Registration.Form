@@ -59,7 +59,7 @@ function generateIDCard(data) {
 
         <p style="margin:2px;"><b>Reg No:</b> ${data.registration}</p>
         <p style="margin:2px;"><b>Blood:</b> ${data.blood}</p>
-        <p style="margin:2px;"><b>Phone:</b> ${data.phone}</p>
+        <p style="margin:2px;"><b>Phone:</b> ${0+data.phone}</p>
 
         <hr style="border:0; border-top:2px solid #000; margin:2px 0;">
 

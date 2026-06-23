@@ -6,7 +6,7 @@
 // ================= API =================
 
 // Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbz1UV3bvoqJ1VJHFyhSPWLOkGVOlhbE2XkLIkRYy65ZzeZcsPV7G7CrEWbphIF-oCGf/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwyjdzZAps9zwXxEWau_r5xub8wIcA2kICskRiVIFFe4W7yt0k-Mp-5cvyt2Bf4HhsA/exec";
 
 
 // ================= PROJECT =================

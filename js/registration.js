@@ -91,6 +91,7 @@ form.addEventListener("submit", async function (e) {
 
         };
 
+
         // ===============================
         // FIXED FETCH (NO HEADERS)
         // ===============================
@@ -173,3 +174,5 @@ function convertToBase64(file) {
     });
 
 }
+
+
